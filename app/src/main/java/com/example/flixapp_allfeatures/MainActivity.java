@@ -1,6 +1,7 @@
 package com.example.flixapp_allfeatures;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixapp_allfeatures.adapters.MovieAdapter;
 import com.example.flixapp_allfeatures.models.Movie;
 
 import org.json.JSONArray;
@@ -27,10 +29,19 @@ public class MainActivity extends AppCompatActivity {
     List<Movie> movies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        movies = new ArrayList<>();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        RecyclerView rvMovies = findViewById(R.id.rvMoviesList);
+        movies = new ArrayList<>();
+
+        //Create adapter
+        MovieAdapter movieAdapter = new MovieAdapter(this, movies);
+        //Set adapter on recycler view
+        rvMovies.setAdapter(movieAdapter);
+        //Set a layout manager on recycler view - needed for recycler view to know how to layout the different views onto the screen
+        rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlLink, new JsonHttpResponseHandler() {
@@ -46,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     //info level
                     Log.i(tag, "Results:" + results.toString());
                     movies.addAll(Movie.fromJsonArray(results));
-
+                    movieAdapter.notifyDataSetChanged();
                     Log.i(tag, "Movies:" + movies.size());
                 } catch (JSONException e) {
                     Log.e(tag, "Json exception", e);

@@ -25,7 +25,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     //Need context to inflate a view, where the adapter is coming from
     Context context;
     //Need the actual data, the actual movies that the adapter needs to hold on to.
-
     List<Movie> movies;
 
     //These will pass through the constructor
@@ -65,7 +64,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
-        RecyclerView rvMovies;
 
 
         public ViewHolder(@NonNull @NotNull View itemView) {
@@ -74,15 +72,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
-            rvMovies = itemView.findViewById(R.id.rvMoviesList);
 
-            //Create adapter
-            MovieAdapter movieAdapter = new MovieAdapter(context, movies);
-
-            //Set adapter on recycler view
-            rvMovies.setAdapter(movieAdapter);
-            //Set a layout manager on recycler view - needed for recycler view to know how to layout the different views onto the screen
-            rvMovies.setLayoutManager(new LinearLayoutManager(context));
         }
 
         public void bind(Movie movie) {
