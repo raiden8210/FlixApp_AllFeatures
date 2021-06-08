@@ -25,6 +25,7 @@ import okhttp3.Headers;
 public class MainActivity extends AppCompatActivity {
 
     public static final String urlLink ="https://api.themoviedb.org/3/movie/now_playing?api_key=af5086ead55b1fc08ec9f072bf15cad9";
+    public static final String youTubeLink="https://api.themoviedb.org/3/movie/632357/videos?api_key=af5086ead55b1fc08ec9f072bf15cad9&language=en-US";
     public static final String tag ="MainActivity";
 
     List<Movie> movies;

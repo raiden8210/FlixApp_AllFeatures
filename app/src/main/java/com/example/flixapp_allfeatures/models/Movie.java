@@ -18,6 +18,7 @@ public class Movie {
     String overview;
     String backdropPath;
     Double voteAverage;
+    Integer id;
 
     //Constructor to construct movie object
     //Exception throws JSONException, whoever makes this call is then responsible for the exception
@@ -30,6 +31,7 @@ public class Movie {
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
         voteAverage = jsonObject.getDouble("vote_average");
+        id = jsonObject.getInt("id");
 
     }
 
