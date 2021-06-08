@@ -1,6 +1,7 @@
 package com.example.flixapp_allfeatures.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.flixapp_allfeatures.MovieDetailsActivity;
 import com.example.flixapp_allfeatures.R;
 import com.example.flixapp_allfeatures.models.Movie;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -57,13 +60,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     }
 
     //ViewHolder is a representation of the row in the RecyclerView. That's what the view passed in will be
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //Need to define variables from each thing in the view in order to bind everything
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
-
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -71,6 +73,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            itemView.setOnClickListener(this);
 
         }
 
@@ -83,6 +86,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         }
 
 
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            if(position != RecyclerView.NO_POSITION) {
+                Movie movie = movies.get(position);
+                Intent i = new Intent(context, MovieDetailsActivity.class);
+                i.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                context.startActivity(i);
+            }
+        }
     }
 
 }

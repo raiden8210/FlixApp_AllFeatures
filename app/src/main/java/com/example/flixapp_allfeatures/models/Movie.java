@@ -9,19 +9,25 @@ import java.util.List;
 import org.parceler.Parcel;
 
 //Pojo, plain old java object
+
+@Parcel
 public class Movie {
 
     String posterPath;
     String title;
     String overview;
-    //String backdropPath;
+    String backdropPath;
 
     //Constructor to construct movie object
     //Exception throws JSONException, whoever makes this call is then responsible for the exception
+
+    public Movie(){};
+
     public Movie(JSONObject jsonObject) throws JSONException {
         posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        backdropPath = jsonObject.getString("backdrop_path");
 
     }
 
@@ -39,6 +45,10 @@ public class Movie {
 
     public String getPosterPath() {
         return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 
     public String getTitle() {
