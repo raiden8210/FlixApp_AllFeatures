@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -58,7 +57,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     }
 
     //ViewHolder is a representation of the row in the RecyclerView. That's what the view passed in will be
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         //Need to define variables from each thing in the view in order to bind everything
         TextView tvTitle;
@@ -78,11 +77,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            Glide.with(context).load(movie.getPosterPath()).placeholder(R.drawable.flicks_movie_placeholder).into(ivPoster);
 
 
         }
+
+
     }
 
 }

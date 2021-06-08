@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setAdapter(movieAdapter);
         //Set a layout manager on recycler view - needed for recycler view to know how to layout the different views onto the screen
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
+
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlLink, new JsonHttpResponseHandler() {

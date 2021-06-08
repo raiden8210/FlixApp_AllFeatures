@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.parceler.Parcel;
 
 //Pojo, plain old java object
 public class Movie {
@@ -13,6 +14,7 @@ public class Movie {
     String posterPath;
     String title;
     String overview;
+    //String backdropPath;
 
     //Constructor to construct movie object
     //Exception throws JSONException, whoever makes this call is then responsible for the exception
