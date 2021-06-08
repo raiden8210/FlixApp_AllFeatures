@@ -17,6 +17,7 @@ public class Movie {
     String title;
     String overview;
     String backdropPath;
+    Double voteAverage;
 
     //Constructor to construct movie object
     //Exception throws JSONException, whoever makes this call is then responsible for the exception
@@ -28,6 +29,7 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
+        voteAverage = jsonObject.getDouble("vote_average");
 
     }
 
@@ -53,6 +55,10 @@ public class Movie {
 
     public String getTitle() {
         return title;
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 
     public String getOverview() {
