@@ -27,7 +27,7 @@ The following **stretch** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://github.com/raiden8210/To-Do-App-Android-Studio/raw/master/FlixApp.gif)
+![](https://github.com/raiden8210/FlixApp_AllFeatures/raw/master/FlixApp.gif)
 
 GIF created with [Kap]
 
